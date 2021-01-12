@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Основы Vue - 2 часть</title>
+        <link rel="stylesheet" href="css/theme.css">
+        <style>
+            [v-cloak] {
+                display: none;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container pt-5" id="app" v-cloak>
+            <div class="card center">
+                <div v-html="myHTML"></div>
+<!--                <h2 v-text="title"></h2>-->
+<!--                <h2 v-once>{{ title }}</h2>-->
+<!--                <h2 v-pre>{{ title }}</h2>-->
+
+<!--                <button @click="title='hello'">Hello</button>-->
+
+                <ul class="list" v-if="items.length">
+                    <li
+                            class="list-item"
+                            v-for="(item, idx) in items"
+                            @click="items.splice(idx, 1)">
+                        {{ item }}
+                    </li>
+<!--                    <li class="list-item" v-for="(value, prop) in person">-->
+<!--                        <strong>{{ prop }}:</strong> {{ value }}-->
+<!--                    </li>-->
+                </ul>
+                <span v-show="items.length === 0">Нет айтемов</span>
+            </div>
+        </div>
+
+        <script src="https://unpkg.com/vue@next"></script>
+        <script src="js/app.js"></script>
+    </body>
+</html>
