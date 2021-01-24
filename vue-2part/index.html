@@ -20,12 +20,19 @@
 
 <!--                <button @click="title='hello'">Hello</button>-->
 
+                <div class="form-control">
+                    <input type="text" @keyup.enter.exact="addItem" ref="myInput">
+                </div>
+
                 <ul class="list" v-if="items.length">
                     <li
                             class="list-item"
                             v-for="(item, idx) in items"
-                            @click="items.splice(idx, 1)">
-                        {{ item }}
+                            @click="remove(idx); log(item)"
+                            :key="item"
+                    ><!-- key Фиксит баг с удалением разметки включая Virtual DOM -->
+                        {{ item }}&nbsp;
+                        <input type="text" @click.stop>
                     </li>
 <!--                    <li class="list-item" v-for="(value, prop) in person">-->
 <!--                        <strong>{{ prop }}:</strong> {{ value }}-->
