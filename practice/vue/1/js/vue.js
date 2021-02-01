@@ -30,7 +30,6 @@ const App = {
     },
     setActive(idx) {
       // когда нажимаем на определенный шаг
-      --idx
       if (idx >= 0 && idx < this.steps.length - 1) {
         this.activeIndex = idx
       } else if (idx >= this.steps.length - 1) {
@@ -43,17 +42,16 @@ const App = {
   computed: {
     // тут стоит определить несколько свойств:
     // 1. текущий выбранный шаг
+    currentStep() {
+      return this.activeIndex
+    },
     // 2. выключена ли кнопка назад
-    isDisabledPrev: {
-      get() {
-        return (this.activeIndex === 0)
-      }
+    isDisabledPrev() {
+      return !this.currentStep
     },
     // 3. находимся ли мы на последнем шаге
-    isLastStep: {
-      get() {
-        return (this.activeIndex < this.steps.length - 1)
-      }
+    isLastStep() {
+      return (this.currentStep < this.steps.length - 1)
     }
   }
 }
