@@ -43,15 +43,15 @@ const App = {
     // тут стоит определить несколько свойств:
     // 1. текущий выбранный шаг
     currentStep() {
-      return this.activeIndex
+      return this.steps[this.activeIndex]
     },
     // 2. выключена ли кнопка назад
     isDisabledPrev() {
-      return !this.currentStep
+      return (this.activeIndex === 0)
     },
     // 3. находимся ли мы на последнем шаге
     isLastStep() {
-      return (this.currentStep < this.steps.length - 1)
+      return (this.activeIndex < this.steps.length - 1)
     }
   }
 }
